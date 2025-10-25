@@ -35,17 +35,39 @@ En Python, estas pruebas se automatizan utilizando la palabra clave **assert**, 
 - Para ejecutar en consola es necesario indicarle a UnitTest donde estan los archivos.
   Comando >>> *** py -m unittest discover -s nombre_carpeta**
 -- UnitTest solo lee archivos que inicial por **test_nombre_elemento_a_probar.py**
+-- Documentación Oficial Pyhon UnitTest: https://docs.python.org/3/library/unittest.html
+-- Para ver detalle de pruebas: Comando >>> *** py -m unittest discover -v -s nombre_carpeta**
 
+#### ✍️ Método Setup en Python
+El uso del método **setup** en los tests permite simplificar y evitar la duplicación de código en las pruebas. Al iniciar un test, setup se ejecuta automáticamente, preparando el entorno para cada prueba de forma eficiente. 
+El método setup evita la creación repetitiva de instancias en cada test. Para lograr esto:
+- Se crea una instancia de cuenta en setup.
+- La cuenta creada se comparte entre todas las pruebas usando self.
 
+#### 🧠 Pruebas de Registro de Transacciones.
+- El método teardown es esencial para asegurar que nuestras pruebas no interfieran entre sí, y se usa para limpiar cualquier recurso temporal al final de cada prueba.
+- El método **teardown** se ejecuta al final de cada prueba, y es utilizado para limpiar recursos como archivos temporales o cerrar conexiones.
+- El **teardown** nos permite eliminar el archivo de log después de cada prueba para que no interfiera con otras. Implementamos una función que, si el archivo existe, lo borra utilizando **os.remove**. Esto asegura que las pruebas se ejecutan en un entorno limpio y los logs no se acumulan entre pruebas.
+- ¿Cómo validamos la existencia del archivo de log?
+- >>> Verificamos si el archivo de log se crea exitosamente. Utilizamos la función **os.path.exists**
+Para validar que los logs tienen la información correcta: 
+1. Contamos las líneas después de crear la cuenta (debe haber una línea).
+2. Hacemos un depósito y volvemos a contar las líneas (debe haber dos líneas).
+3. Si no limpiáramos el archivo con teardown, el número de líneas sería incorrecto.
 
-### 📂 Tipos de pruebas para asegurar la calidad del software
+### ⚠️ Métodos de Assert en UnitTest para Pruebas Efectivas
 
-
-
-### 📂 Tipos de pruebas para asegurar la calidad del software
-
-
+- La TestCaseclase proporciona varios métodos de aserción para detectar y reportar fallos.
+- assertEqual(a, b) > a == b,  assertNotEqual(a, b) > a != b, assertTrue(x) > bool(x) is True, 
+  assertFalse(x) > bool(x) is False,   assertIs(a, b) > a is b, assertIsNot(a, b) > a is not b,
+  assertIsNone(x) > x is None, assertIsNotNone(x) > x is not None, assertIn(a, b) > a in b,
+  assertNotIn(a, b) > a not in b, assertIsInstance(a, b) > isinstance(a, b).
+  Aplica a partir de Python 3.14. 
+  assertNotIsInstance(a, b) > not isinstance(a, b), assertIsSubclass(a, b) issubclass(a, b),
+  assertNotIsSubclass(a, b) > not issubclass(a, b).
+- 
+   
 
 
 Emogis 
-📂 🧠 📝 💡 ✍️ ⚠️ ✨ ⚙️ 🐛
+ 📝 💡 ✍️  ✨ ⚙️ 🐛
