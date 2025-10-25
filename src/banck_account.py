@@ -1,3 +1,7 @@
+from datetime import datetime
+from src.exceptions import InsufficientFundsError, WithdrawlTimeRestrictionError
+
+
 class BanckAccount:
     """
     A class that represents a bank account and allows basic financial operations.
@@ -27,6 +31,9 @@ class BanckAccount:
         return self.balance
 
     def withdraw(self, amount):
+        now = datetime.now()
+        if now.hour < 8 and now.hour > 17:
+            raise WithdrawlTimeRestrictionError("En este horario no esta permitido esta trx.")
         if amount > 0:
             self.balance -= amount
             self._log_transaction(f"Withdrew {amount}. New balance: {self.balance}")

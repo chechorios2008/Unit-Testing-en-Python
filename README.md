@@ -48,8 +48,8 @@ El método setup evita la creación repetitiva de instancias en cada test. Para 
 - El método teardown es esencial para asegurar que nuestras pruebas no interfieran entre sí, y se usa para limpiar cualquier recurso temporal al final de cada prueba.
 - El método **teardown** se ejecuta al final de cada prueba, y es utilizado para limpiar recursos como archivos temporales o cerrar conexiones.
 - El **teardown** nos permite eliminar el archivo de log después de cada prueba para que no interfiera con otras. Implementamos una función que, si el archivo existe, lo borra utilizando **os.remove**. Esto asegura que las pruebas se ejecutan en un entorno limpio y los logs no se acumulan entre pruebas.
-- ¿Cómo validamos la existencia del archivo de log?
-- >>> Verificamos si el archivo de log se crea exitosamente. Utilizamos la función **os.path.exists**
+¿Cómo validamos la existencia del archivo de log?
+- Verificamos si el archivo de log se crea exitosamente. Utilizamos la función **os.path.exists**
 Para validar que los logs tienen la información correcta: 
 1. Contamos las líneas después de crear la cuenta (debe haber una línea).
 2. Hacemos un depósito y volvemos a contar las líneas (debe haber dos líneas).
@@ -62,12 +62,19 @@ Para validar que los logs tienen la información correcta:
   assertFalse(x) > bool(x) is False,   assertIs(a, b) > a is b, assertIsNot(a, b) > a is not b,
   assertIsNone(x) > x is None, assertIsNotNone(x) > x is not None, assertIn(a, b) > a in b,
   assertNotIn(a, b) > a not in b, assertIsInstance(a, b) > isinstance(a, b).
-  Aplica a partir de Python 3.14. 
+- Aplican a partir de Python 3.14. 
   assertNotIsInstance(a, b) > not isinstance(a, b), assertIsSubclass(a, b) issubclass(a, b),
   assertNotIsSubclass(a, b) > not issubclass(a, b).
-- 
-   
+
+### ✨ Decoradores de Unit Test para Saltar Pruebas y Detectar Fallos
+
+Python y unittest ofrecen decoradores que nos permiten omitir pruebas temporalmente, sin comprometer el flujo de trabajo ni la integridad del proyecto. ***@skip, @skipIf y @expectedFailure***
+- El decorador **@skip** se utiliza cuando sabemos que una prueba no debería ejecutarse temporalmente.
+- El decorador **@skipIf** es útil cuando queremos omitir una prueba bajo una condición específica.
 
 
-Emogis 
- 📝 💡 ✍️  ✨ ⚙️ 🐛
+### ⚙️ Organización y Ejecución de Pruebas con Python Unit Test
+
+
+
+ 📝 💡 ✍️  🐛
