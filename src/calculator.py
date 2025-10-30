@@ -1,4 +1,8 @@
 def sum(a, b):
+    """
+    >>> sum(5, 7)
+    11
+    """
     return a + b
 
 

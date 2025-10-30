@@ -38,7 +38,7 @@ En Python, estas pruebas se automatizan utilizando la palabra clave **assert**, 
 -- Documentación Oficial Pyhon UnitTest: https://docs.python.org/3/library/unittest.html
 -- Para ver detalle de pruebas: Comando >>> *** py -m unittest discover -v -s nombre_carpeta**
 
-#### ✍️ Método Setup en Python
+#### 🐛 Método Setup en Python
 El uso del método **setup** en los tests permite simplificar y evitar la duplicación de código en las pruebas. Al iniciar un test, setup se ejecuta automáticamente, preparando el entorno para cada prueba de forma eficiente. 
 El método setup evita la creación repetitiva de instancias en cada test. Para lograr esto:
 - Se crea una instancia de cuenta en setup.
@@ -73,8 +73,33 @@ Python y unittest ofrecen decoradores que nos permiten omitir pruebas temporalme
 - El decorador **@skipIf** es útil cuando queremos omitir una prueba bajo una condición específica.
 
 
-### ⚙️ Organización y Ejecución de Pruebas con Python Unit Test
+### ⚙️ pruebas con SubTest en UnitTest
 
+Al utilizar SubTest, puedes definir todos los valores que deseas probar en una lista o diccionario. Luego, iteras sobre estos valores mediante un bucle for, ejecutando la misma prueba con cada conjunto de parámetros. Así, si es necesario modificar la prueba, solo tienes que hacer cambios en un único lugar.
 
+### 💡 Generación de Datos de Prueba con la Librería Faker
+Documentación: https://faker.readthedocs.io/en/master/
+- pip install faker
+Faker nos ofrece una gran variedad de métodos predefinidos para generar nombres, correos, cuentas bancarias, entre otros. La ventaja clave es que nos permite automatizar la generación de múltiples entradas en cada ejecución de nuestras pruebas.
 
- 📝 💡 ✍️  🐛
+### ✍️ Cobertura de Código en Python con Coverage: Instalación y Uso
+
+**Coverage** es una herramienta que se ejecuta junto a las pruebas y captura un reporte sobre qué partes del código han sido probadas. Una vez finalizado el proceso, genera un informe detallado que indica qué porcentaje del código está cubierto.
+
+- Para instalar Coverage en un proyecto Python, sigue los siguientes pasos:
+1. Abre la terminal e instala la herramienta con **pip install coverage**
+2. Después, usa **pip freeze > requirements.txt** para agregar la librería a tu archivo de requirements.
+3. Una vez instalada, ejecuta el comando **coverage run -m unittest discover -s tests**, que corre las pruebas en la carpeta **tests**.
+
+### 📝 Cobertura de Código en Python con Coverage: Instalación y Uso
+
+https://docs.pytest.org/en/latest/
+
+**Pytest** es un framework de testing potente, flexible y fácil de usar en Python. Se utiliza para escribir, organizar y ejecutar pruebas de manera eficiente, tanto en proyectos pequeños como en aplicaciones complejas.
+
+1. Simplicidad: No requiere crear clases ni heredar de unittest.TestCase. Las pruebas se escriben como funciones normales con assert.
+2. Asserts enriquecidos: Pytest muestra mensajes de error detallados y legibles al fallar una prueba
+3. Detección automática: Detecta automáticamente archivos y funciones de prueba con nombres que comiencen con test_.
+4. Fixtures: Permite definir funciones reutilizables que preparan el entorno de prueba (por ejemplo, crear una base de datos o un archivo temporal). Se inyectan automáticamente en las pruebas que las necesitan.
+5. Plugins: Pytest cuenta con una gran variedad de plugins que amplían su funcionalidad
+6. 
